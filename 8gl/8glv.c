@@ -4,12 +4,12 @@
 
 int main()
 {
-    char s[] = "Скажи друг и проходи";
+    char s[] = "Секретные данные банка";
     encrypt(s);
-    printf("Зашифровано в '%s'\n", s);
-    printf("Контрольная сумма %i\n", checksum(s));
+    printf("Зашифровано: %s\n", s);
+    printf("Контрольная сумма: %i\n", checksum(s));
     encrypt(s);
-    printf("Расшифровано обратно в '%s'\n", s);
-    printf("Контрольная сумма %i\n", checksum(s));
+    printf("Расшифровано: %s\n", s);
+    printf("Контрольная сумма: %i\n", checksum(s));
     return 0;
 }
