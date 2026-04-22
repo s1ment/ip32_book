@@ -36,3 +36,34 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 */
+/*#include <stdio.h>
+#include <stdlib.h>
+#include <errno.h>
+#include <string.h>
+#include <unistd.h> 
+
+int main() {
+    if (execl("/sbin/ip", "ip", NULL) == -1)
+        if (execlp("ipconfig", "ipconfig", NULL) == -1) {
+            fprintf(stderr, "Не удалось запустить ipconfig: %s", strerror(errno));
+            return 1;
+        }
+    return 0;
+}\
+*/
+
+/*#include <stdio.h>
+#include <stdlib.h>
+#include <errno.h>
+#include <string.h>
+#include <unistd.h> 
+
+int main(int argc, char *argv[]) {
+    char *my_env[] = {"FOOD=кофе", NULL};
+    if (execle("./coffee", "./coffee", "пончики", NULL, my_env) == -1) {
+        fprintf(stderr, "Не могу создать заказ: %s\n", strerror(errno));
+        return 1;
+    }
+    return 0;
+}
+*/
