@@ -67,3 +67,35 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 */
+/*#include <stdio.h>
+#include <stdlib.h>
+#include <errno.h>
+#include <string.h>
+#include <unistd.h> 
+
+int main(int argc, char *argv[]) {
+    char *feeds[] = {"http://feeds.bbci.co.uk/news/rss.xml", 
+                "http://feeds.reuters.com/reuters/topNews",
+                "https://www.theguardian.com/world/rss"};
+    int times = 3;
+    char *phrase = argv[1];
+    for(int i = 0; i < times; i++) {
+        char var[255];
+        sprintf(var, "RSS_FEED=%s", feeds[i]);
+        char *vars[] = {var, NULL};
+        pid_t pid = fork();
+        if (pid == -1) {
+            fprintf(stderr, "Не могу клонировать процесс: %s\n", strerror(errno));
+            return 1;
+        }
+        if (!pid) {
+            if(execle("/usr/bin/python3", "/usr/bin/python3", 
+                "./rssgossip.py", phrase, NULL, vars) == -1) {
+            fprintf(stderr, "Не могу запустить скрипт: %s\n", strerror(errno));
+            return 1;
+            }
+        }
+    }
+    return 0;
+}
+*/
